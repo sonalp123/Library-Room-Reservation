@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Library Room Reservation System</h1>
+<h1>Login Page</h1>
+<br>
+<div class="field">
+  <label><b>Email:</b></label>
+  <%= text_field(:user, :email) %>
+  </div>
+<br>
+<div class="field">
+  <label><b>Password:</b></label>
+  <%= password_field(:user, :password_hash) %>
+</div>
+<br>
+<%= link_to 'Login', new_loginpage_path %>
+<span style="margin-right: 2em"></span>
+<%= link_to 'Sign Up', new_user_path %>
