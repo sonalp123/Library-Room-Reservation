@@ -1,0 +1,16 @@
+<h2>Deleting Admins</h2>
+<%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'destroy') do |f| %>
+        <div class="field">
+          <label>Enter Username:</label>
+          <%= f.text_field :username %>
+        </div>
+        <br>
+        <label>Are you sure you wish to delete this admin?</label>
+        <br>
+        <div class="actions">
+          <br>
+          <%= f.submit "Delete", class: 'btn btn-large btn-primary' %>
+        </div>
+        <br>
+        <%= link_to 'Back to Login Page', dum_path%>
+    <% end %>

@@ -2,7 +2,6 @@
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -26,8 +25,5 @@
   <div class="field">
     <%= f.label :password_salt %><br>
     <%= f.text_field :password_salt %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
   </div>
 <% end %>

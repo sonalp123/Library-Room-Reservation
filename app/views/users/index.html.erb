@@ -1,18 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Library Room Reservation System</h1>
-<h1>Login Page</h1>
-<br>
-<div class="field">
-  <label><b>Email:</b></label>
-  <%= text_field(:user, :email) %>
-  </div>
-<br>
-<div class="field">
-  <label><b>Password:</b></label>
-  <%= password_field(:user, :password_hash) %>
-</div>
-<br>
-<%= link_to 'Login', new_loginpage_path %>
-<span style="margin-right: 2em"></span>
-<%= link_to 'Sign Up', new_user_path %>
+<%= form_for(:user, url:users_path) do |f| %>
+<h1>Library Reservation System</h1>
+    <h2>Login Page</h2>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password_hash %><br>
+      <%= f.password_field :password_hash %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Login', class: "btn btn-large btn-primary" , formaction: dum_path%>
+      <p>New user?</p> <%= f.submit 'Signup', class: "btn btn-large btn-primary", formaction: new_user_path%>
+    </div>
+<% end %>

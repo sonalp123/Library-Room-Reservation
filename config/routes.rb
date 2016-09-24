@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
-   resources :users
    resources :sessions
   # You can have the root of your site routed with "root"
-   get 'sessions#logout'
+   get 'sessions/logout' => 'sessions#logout'
+   post 'users/dum', to: 'users#dum', :as => 'dum'
+   get 'users/dum', to: 'users#dum', :as => 'dumget'
+   get 'users/admincreation', to: 'users#admincreation', :as => 'admins'
+   get 'users/admdel', to: 'users#admdel', :as => 'admdel'
+   get 'users/admview', to: 'users#admview', :as => 'admview'
+   post '/users/index',to: 'users#index',as: 'users'
+   post '/users/delete', to: 'users#destroy', as: 'del_user'
+   get '/users/index',to: 'users#index',as: 'users_get'
+   post '/users/new',to: 'users#new',as: 'new_user'
+   get '/users/edit',to: 'users#edit',as:'edit_user'
+   get '/users/show', to: 'users#show', as: 'user'
+   get '/users/destroy',to: 'users#destroy'
+   post '/users/update',to: 'users#update', as: 'update_user'
+   post '/users/create',to: 'users#create', as: 'create_user'
+  #get '/users/index',to: 'users#index',as: 'users'
    root 'users#index'
 
   # Example of regular route:

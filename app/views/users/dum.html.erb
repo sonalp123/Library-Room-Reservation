@@ -1,0 +1,25 @@
+<h1>Admin Console</h1>
+<%= form_for(:user, url:dum_path) do |f| %>
+    <ul>
+      <label>Manage Admins</label><br>
+      <ul><br>
+        <li><%= link_to 'Creating New Admins', admins_path%></li>
+        <li><%= link_to 'View All Admins', admview_path%></li>
+        <li><%= link_to 'Deleting Admins', admdel_path%></li>
+      </ul>
+      <br><label>Manage Rooms</label><br>
+      <ul><br>
+        <li><%= link_to 'Add Rooms', admins_path%></li>
+        <li><%= link_to 'View All Rooms', admins_path%></li>
+        <li><%= link_to 'Edit Rooms', admins_path%></li>
+        <li><%= link_to 'View Rooms Booking History', admins_path%></li>
+        <li><%= link_to 'Delete Rooms', admins_path%></li>
+      </ul>
+      <br><label>Manage Library Members</label><br>
+      <ul><br>
+        <li><%= link_to 'View All Members', members_path%></li>
+        <li><%= link_to 'View Reservation History', admins_path%></li>
+        <li><%= link_to 'Delete Members', admins_path%></li>
+      </ul>
+      </ul>
+<% end %>

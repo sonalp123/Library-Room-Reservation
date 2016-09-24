@@ -1,0 +1,21 @@
+<h1>Modifying Roles</h1>
+<h2>Creating New Admins</h2>
+<%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'update') do |f| %>
+    <div class="field">
+      <label>Enter Username:</label>
+      <%= f.text_field :username %>
+    </div>
+    <br>
+    <label>Modify Role to: </label>
+    <select>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+    <br>
+    <div class="actions">
+      <br>
+      <%= f.submit "Save Changes", class: "btn btn-large btn-primary", formaction: dum_path %>
+    </div>
+    <br>
+    <%= link_to 'Back to Login Page', dum_path%>
+<% end %>
