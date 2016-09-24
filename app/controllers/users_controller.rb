@@ -1,29 +1,30 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :admdel, :memsdel]
+  wrap_parameters :user, include: [:username, :email, :password_hash, :password_salt, :role]
 
   # GET /users
   # GET /users.json
   def index
-    flash.now[:notice] = "Welcome #{@user}"
+    if :notice.empty?
+      flash.now[:notice] = "Welcome #{@user}"
     # @users = User.all
    # @user = User.new(user_params)
    #if params[:commit] == 'Login'
    #  redirect_to dum_path
    #end
-  end
+    end
+    end
 
   # GET /users/1
   # GET /users/1.json
-  def show
-  end
-
   def dum
+    #flash[:notice] = "hi #{params[:session][:username]}"
   end
 
   def admdel
-    @user = User.new()
-    #@admdel = User.find_by_username(@user.username)
-    puts @user
+  end
+
+  def memsdel
   end
 
   def admview
@@ -31,6 +32,15 @@ class UsersController < ApplicationController
     @admall = User.find_by_role("admin")
   end
 
+  def memsview
+    @user = User.new
+    @memsall = User.find_by_role("user")
+  end
+
+  def memshist
+    @user = User.new
+   # @memshistall = BookingHistory.find_by_role("username")
+  end
   def admincreation
     @user = User.new
   end
@@ -49,13 +59,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        flash[:notice] = 'done'
-        format.json { render :show, status: :created, location: @user }
+      if @user.save!
+        #sign_in @user
+        flash[:notice] = "#{params[:user][:username]} User was successfully created."
+        format.html {redirect_to dumget_path}
+        #format.json { render :dum, status: :created, location: @user }
       else
+        flash[:notice] = "hi"
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        #format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,15 +75,17 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    @user_update = User.new(user_params)
-    @user = User.all.select {|u| u.username == params[:username]}
+    #@user_update = User.new(user_params)
+    #@user = User.all.select {|u| u.username == params[:username]}
+    #@user = User.find(params[:username])
     respond_to do |format|
-      if @user.save(user_params)
+      if @user.update_attributes(params[:user])
+        flash[:success]="Profile updated"
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        #format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        #format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -103,4 +117,8 @@ class UsersController < ApplicationController
     reset_session
     redirect_to user_path
   end
+
+  def show
+  end
+
 end

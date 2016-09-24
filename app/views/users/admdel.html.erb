@@ -1,3 +1,4 @@
+<% provide(:title, 'Deleting Admins') %>
 <h2>Deleting Admins</h2>
 <%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'destroy') do |f| %>
         <div class="field">

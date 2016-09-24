@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-   resources :sessions
+   resources :sessions, only: [:new, :create, :destroy]
+
   # You can have the root of your site routed with "root"
    get 'sessions/logout' => 'sessions#logout'
    post 'users/dum', to: 'users#dum', :as => 'dum'
@@ -7,6 +8,9 @@ Rails.application.routes.draw do
    get 'users/admincreation', to: 'users#admincreation', :as => 'admins'
    get 'users/admdel', to: 'users#admdel', :as => 'admdel'
    get 'users/admview', to: 'users#admview', :as => 'admview'
+   get 'users/memsview', to: 'users#memsview', :as => 'memsview'
+   get 'users/memshist', to: 'users#memshist', :as => 'memshist'
+   get 'users/memsdel', to: 'users#memsdel', :as => 'memsdel'
    post '/users/index',to: 'users#index',as: 'users'
    post '/users/delete', to: 'users#destroy', as: 'del_user'
    get '/users/index',to: 'users#index',as: 'users_get'
@@ -17,8 +21,11 @@ Rails.application.routes.draw do
    post '/users/update',to: 'users#update', as: 'update_user'
    post '/users/create',to: 'users#create', as: 'create_user'
   #get '/users/index',to: 'users#index',as: 'users'
-   root 'users#index'
+   get '/signin', to: 'sessions#new'
+   get '/signout', to: 'sessions#destroy', as: 'delete'
 
+   #root 'users#index'
+    root 'sessions#new'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

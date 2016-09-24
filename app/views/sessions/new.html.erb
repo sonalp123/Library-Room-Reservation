@@ -1,5 +1,6 @@
-<%= form_for(:user, url:users_path) do |f| %>
-<h1>Library Reservation System</h1>
+<h1>Sign in</h1>
+<%= form_for (@user) ,:url=> url_for(:controller => 'sessions',:action =>'create') do |f| %>
+    <h1>New Library Reservation System</h1>
     <h2>Login Page</h2>
     <div class="field">
       <%= f.label :email %><br>
@@ -10,7 +11,7 @@
       <%= f.password_field :password_hash %>
     </div>
     <div class="actions">
-      <%= f.submit 'Login', class: "btn btn-large btn-primary" , formaction: dum_path%>
+      <%= f.submit 'Login', class: "btn btn-large btn-primary" %>
       <p>New user?</p> <%= f.submit 'Signup', class: "btn btn-large btn-primary", formaction: new_user_path%>
     </div>
 <% end %>

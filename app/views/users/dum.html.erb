@@ -1,3 +1,5 @@
+<% provide(:title, 'Admin Console') %>
+<p id="notice">Hello <%= notice %></p>
 <h1>Admin Console</h1>
 <%= form_for(:user, url:dum_path) do |f| %>
     <ul>
@@ -17,9 +19,9 @@
       </ul>
       <br><label>Manage Library Members</label><br>
       <ul><br>
-        <li><%= link_to 'View All Members', members_path%></li>
-        <li><%= link_to 'View Reservation History', admins_path%></li>
-        <li><%= link_to 'Delete Members', admins_path%></li>
+        <li><%= link_to 'View All Members', memsview_path%></li>
+        <li><%= link_to 'View Reservation History', memshist_path%></li>
+        <li><%= link_to 'Delete Members', memsdel_path%></li>
       </ul>
       </ul>
 <% end %>

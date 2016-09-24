@@ -1,16 +1,7 @@
 <% provide(:title, "Sign Up") %>
 <h1>Sign Up</h1>
 <%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'create') do |f| %>
-    <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+
     <div class="field">
       <%= f.label :username %>
       <%= f.text_field :username %>
@@ -22,12 +13,12 @@
     </div>
     <br>
     <div class="field">
-      <label>Password</label>
+      <%= f.label :password_hash %>
       <%= f.text_field :password_hash %>
     </div>
     <br>
     <div class="field">
-      <label>Confirm Password</label>
+      <%= f.label :password_salt %>
       <%= f.text_field :password_salt %>
     </div>
     <br>
