@@ -36,9 +36,10 @@ Rails.application.routes.draw do
   get '/booking_histories/destroy',to: 'booking_histories#destroy'
   post '/booking_histories/create',to: 'booking_histories#create'
 
-  get '/signin', to: 'sessions#new'
-   get '/signout', to: 'sessions#destroy', as: 'delete'
-
+  #get '/signin', to: 'sessions#new'
+   #get '/signout', to: 'sessions#destroy', as: 'delete'
+  get '/sessions/index', to: 'sessions#index', as: 'loggingout'
+  get '/sessions/new', to: 'sessions#new', as: 'home'
    #root 'users#index'
     root 'sessions#new'
   # Example of regular route:
