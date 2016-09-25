@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<%= form_for (@library_room),:url=> url_for(:controller => 'library_rooms',:action =>'viewhist') do |f| %>
+<h1>Booking History of Room</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Number</th>
+    <th>Building</th>
+    <th>Size</th>
+    <th colspan="5"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @hist_room %>
+  </tbody>
+</table>
+
+<br>
+<% end %>
