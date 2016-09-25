@@ -95,7 +95,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @currentuser.update(user_params)
         flash[:success]="Profile updated"
-        format.html { redirect_to booking_histories_url, notice: 'User was successfully updated.' }
+        if @currentuser.role == "admin"
+          format.html { redirect_to dum_url, notice: 'User was successfully updated.' }
+        else
+          format.html { redirect_to booking_histories_url, notice: 'User was successfully updated.' }
+        end
       else
         flash[:notice]="Profile couldn't be updated. Please try again"
         format.html { redirect_to booking_histories_url }
