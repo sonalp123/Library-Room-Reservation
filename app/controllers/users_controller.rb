@@ -89,10 +89,11 @@ class UsersController < ApplicationController
     #@user = User.find_by_username(params[:user][:username])
     @user = User.find_by_username(params[:user][:username])
     respond_to do |format|
-      if @user.update_attributes(params[:user][:role])
+      if @user.update(user_params)
         flash[:success]="Profile updated"
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
       else
+        flash[:notice]="Profile couldn't be updated. Please try again"
         format.html { render :edit }
         #format.json { render json: @user.errors, status: :unprocessable_entity }
       end

@@ -169,6 +169,25 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
       <method />
     </configuration>
+    <configuration default="false" name="db:seed: untitled2" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
+      <module name="untitled2" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="db:seed" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
+      <method />
+    </configuration>
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
@@ -189,6 +208,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v4.2.5.1, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v4.2.5.1, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v4.2.5.1, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.4.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v6.0.3, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.11, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt-ruby (v3.1.5, ruby-2.2.4-p230) [gem]" level="application" />
@@ -202,13 +222,20 @@
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.0.2, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug_inspector (v0.0.2, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v4.2.0, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="domain_name (v0.5.20160826, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="excon (v0.52.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.7.0, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.14, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.3.7, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="heroku (v3.41.5, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="heroku-api (v0.4.2, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="http-cookie (v1.0.2, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.7.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.6.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.2.1, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v1.8.3, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="launchy (v2.4.3, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.0.3, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.6.4, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v3.1, ruby-2.2.4-p230) [gem]" level="application" />
@@ -216,6 +243,9 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_portile2 (v2.1.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.9.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.12.1, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-ssh (v3.2.0, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-ssh-gateway (v1.2.0, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="netrc (v0.11.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.6.8, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v0.19.0, ruby-2.2.4-p230) [gem]" level="application" />
@@ -231,6 +261,8 @@
     <orderEntry type="library" scope="PROVIDED" name="rake (v11.3.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.2.2, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v2.3.0, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rest-client (v2.0.0, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubyzip (v1.2.0, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.4.22, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.0.6, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sdoc (v0.4.1, ruby-2.2.4-p230) [gem]" level="application" />
@@ -244,6 +276,8 @@
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.2, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo-data (v1.2016.6, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v3.0.2, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="unf (v0.1.4, ruby-2.2.4-p230) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="unf_ext (v0.0.7.2, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.6, ruby-2.2.4-p230) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v2.3.0, ruby-2.2.4-p230) [gem]" level="application" />
   </component>
