@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @library_room.number %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @library_room.building %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @library_room.size %>
+</p>
+
+<%= link_to 'Edit', edit_library_room_path(@library_room) %> |
+<%= link_to 'Back', library_rooms_path %>

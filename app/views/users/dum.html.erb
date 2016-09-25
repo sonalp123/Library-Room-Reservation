@@ -1,8 +1,9 @@
 <% provide(:title, 'Admin Console') %>
-<div align="left"><h3><p id="notice">Hello <%= session[:user_name] %></p></h3></div>
+<div align="left"><h3><p id="notice">Hello <%= session[:user_name] %>!</p></h3></div>
 <h2>Admin Console</h2>
 <%= form_for(:user, url:dum_path) do |f| %>
     <ul>
+      <li><%= link_to 'My Account', editprof_path%></li><br>
       <label>Manage Admins</label><br>
       <ul><br>
         <li><%= link_to 'Creating New Admins', edit_user_path%></li>

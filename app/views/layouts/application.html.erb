@@ -9,6 +9,8 @@
 <body>
 <%= yield %>
 <br>
-<%= link_to 'Logout', new_session_path %>
+<% if session[:user_id] %>
+    <%= link_to 'Logout', root_path %>
+<% end %>
 </body>
 </html>

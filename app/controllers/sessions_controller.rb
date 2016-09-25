@@ -2,7 +2,13 @@ class SessionsController < ApplicationController
   wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :role]
 
     def new
-      @user = User.new
+      if session[:user_id].nil?
+        @user = User.new
+      elsif @user.role == 'admin'
+          redirect_to dumget_path
+        else
+          redirect_to booking_histories_path
+      end
     end
 
     def create
@@ -11,21 +17,23 @@ class SessionsController < ApplicationController
         flash[:notice] = "You logged in"
         session[:user_id] = @user.id
         session[:user_name] = @user.username
+        session[:user_role] = @user.role
         if @user.role == 'admin'
-          redirect_to dumget_path
+          #redirect_to dumget_path
+          render dumget_path
         else
           redirect_to booking_histories_path
         end
       else
-        render 'new'
-        flash[:notice] = 'Invalid email/password combination'
+        flash[:notice] = "Invalid email/password combination"
+        redirect_to root_path, alert: "Invalid email/password combination"
       end
     end
 
     def logout
       session[:user_id] = nil
       flash[:notice] = "You have successfully logged out."
-      redirect_to users_url
+      redirect_to home_url
     end
 
     def destroy

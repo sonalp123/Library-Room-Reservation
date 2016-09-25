@@ -1,0 +1,35 @@
+<% provide(:title, 'Edit Profile') %>
+<h1>Edit Profile</h1>
+<%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'update') do |f| %>
+    <% if session[:user_role] == 'admin' %>
+         <text>Edit all library members profiles (registered users and other admins)</text><br><br>
+        <div class="field">
+          <%= f.label :username %><br>
+          <%= f.text_field :username %><br>
+        </div>
+    <% else %>
+        <div class="field">
+        <%= f.label :username %><br>
+        <%= f.label session[:user_name] %><br>
+        </div>
+    <% end %><br>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %><br>
+    </div><br>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.text_field :password %><br>
+    </div><br>
+    <div class="field">
+      <%= f.label :password_confirmation %><br>
+      <%= f.text_field :password_confirmation %>
+    </div><br>
+    <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+    <br>
+    <% if session[:user_role] == 'admin' %>
+        <br><%= link_to 'Back to Admin Console', dum_path%>
+    <% else %>
+        <br><%= link_to 'Back to Member Console', booking_histories_path%>
+    <% end %>
+<% end %>

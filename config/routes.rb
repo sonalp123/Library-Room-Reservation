@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post '/users/delete', to: 'users#destroy', as: 'del_user'
   post '/users/new',to: 'users#new',as: 'new_user'
   get '/users/edit',to: 'users#edit',as:'edit_user'
+  get '/users/editprof',to: 'users#editprof',as:'editprof'
   get '/users/show', to: 'users#show', as: 'user'
   get '/users/destroy',to: 'users#destroy'
   post '/users/update',to: 'users#update', as: 'update_user'

@@ -53,11 +53,17 @@
 </table>
 <%= form_for (@booking),:url=> url_for(:controller => 'booking_histories',:action =>'create') do |f| %>
 
-
-    <div class="field">
-      <%= f.label :username %><br>
-      <%= f.text_field :username %>
-    </div>
+    <% if session[:user_role] == "admin" %>
+        <div class="field"><br>
+          <%= f.label :username %>
+          <%= f.text_field :username %>
+        </div>
+    <% else %>
+        <div class="field">
+          <%= f.label :username %>
+          <%= f.label session[:user_name] %>
+        </div>
+    <% end %>
     <div class="field">
       <%= f.label :room_num %><br>
       <%= f.number_field :room_num %>
@@ -77,7 +83,6 @@
     <div class="field">
       <%= f.label :building %><br>
       <%= f.select :building, options_for_select([["Select One", ""], "DH Hill", "Hunt"]) %>
-
     </div>
 
     <div class="field">
@@ -86,5 +91,6 @@
     </div><br>
     <div class="actions">
       <%= f.submit "Book" %>
+      <%= link_to 'Back to Member Console', booking_histories_path%>
     </div>
 <% end %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @booking_history.id %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @booking_history.username %>
+</p>
+
+<p>
+  <strong>Room num:</strong>
+  <%= @booking_history.room_num %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @booking_history.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @booking_history.end_time %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @booking_history.date %>
+</p>
+
+<%= link_to 'Edit', edit_booking_history_path(@booking_history) %> |
+<%= link_to 'Back', booking_histories_path %>

@@ -1,0 +1,32 @@
+<%= form_for(@library_room) do |f| %>
+    <% if @library_room.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@library_room.errors.count, "error") %> prohibited this library_room from being saved:</h2>
+
+          <ul>
+            <% @library_room.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <br>
+    <div class="field">
+      <%= f.label :number %><br>
+      <%= f.number_field :number %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :building %><br>
+      <%= f.text_field :building %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :size %><br>
+      <%= f.number_field :size %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

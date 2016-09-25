@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     #flash[:notice] = "hi #{params[:session][:username]}"
   end
 
+  def editprof
+    @user = User.new
+  end
+
   def admdel
     @user = User.new
   end
@@ -87,7 +91,8 @@ class UsersController < ApplicationController
     #@user_update = User.new(user_params)
     #@user = User.all.select {|u| u.username == params[:username]}
     #@user = User.find_by_username(params[:user][:username])
-    @user = User.find_by_username(params[:user][:username])
+    @user = User.new(user_params)
+    #@user = User.find_by_username(params[:user][:username])
     respond_to do |format|
       if @user.update(user_params)
         flash[:success]="Profile updated"
