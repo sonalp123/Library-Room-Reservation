@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :admdel, :memsdel]
+  before_action :set_user, only: [:show, :edit, :admdel, :memsdel, :update]
   wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :role]
 
   # GET /users
@@ -89,15 +89,20 @@ class UsersController < ApplicationController
     #@user_update = User.new(user_params)
     #@user = User.all.select {|u| u.username == params[:username]}
     #@user = User.find_by_username(params[:user][:username])
-    @user = User.new(user_params)
+    #@user.(user_params)
+    #@user.username = session[:user_name]
     #@user = User.find_by_username(params[:user][:username])
     respond_to do |format|
-      if @user.update(user_params)
+      if @currentuser.update(user_params)
         flash[:success]="Profile updated"
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        if @currentuser.role == "admin"
+          format.html { redirect_to dum_url, notice: 'User was successfully updated.' }
+        else
+          format.html { redirect_to booking_histories_url, notice: 'User was successfully updated.' }
+        end
       else
         flash[:notice]="Profile couldn't be updated. Please try again"
-        format.html { render :edit }
+        format.html { redirect_to booking_histories_url }
         #format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -113,7 +118,7 @@ class UsersController < ApplicationController
     end
 end
   def set_user
-      #@currentuser = User.find(session[:user_id])
+      @currentuser = User.find_by_username(session[:user_name])
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.

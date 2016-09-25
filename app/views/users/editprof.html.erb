@@ -1,18 +1,10 @@
 <% provide(:title, 'Edit Profile') %>
 <h1>Edit Profile</h1>
 <%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'update') do |f| %>
-    <% if session[:user_role] == 'admin' %>
-         <text>Edit all library members profiles (registered users and other admins)</text><br><br>
-        <div class="field">
-          <%= f.label :username %><br>
-          <%= f.text_field :username %><br>
-        </div>
-    <% else %>
-        <div class="field">
-        <%= f.label :username %><br>
-        <%= f.label session[:user_name] %><br>
-        </div>
-    <% end %><br>
+    <div class="field">
+      <%= f.label :username %><br>
+      <%= f.label session[:user_name] %><br>
+    </div>
     <div class="field">
       <%= f.label :email %><br>
       <%= f.text_field :email %><br>
