@@ -1,3 +1,4 @@
+#Dummy
 <h1>Modifying Roles</h1>
 <h2>Creating New Admins</h2>
 <%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'update') do |f| %>
@@ -6,16 +7,14 @@
       <%= f.text_field :username %>
     </div>
     <br>
-    <label>Modify Role to: </label>
-    <select>
-      <option value="admin">Admin</option>
-      <option value="user">User</option>
-    </select>
-    <br>
+    <div class="field">
+      <%= f.label :role %><br>
+      <%= f.select :role, options_for_select([["Select One", ""], "admin", "user"]) %>
+    </div>
     <div class="actions">
       <br>
-      <%= f.submit "Save Changes", class: "btn btn-large btn-primary", formaction: dum_path %>
+      <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
     </div>
     <br>
-    <%= link_to 'Back to Login Page', dum_path%>
+    <%= link_to 'Back to Admin Console', dum_path%>
 <% end %>

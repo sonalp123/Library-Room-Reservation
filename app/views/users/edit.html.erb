@@ -1,40 +1,19 @@
-<% provide (:title, 'My Account') %>
-<h1>My Account</h1>
-<h1>Editing User</h1>
-<%= form_for (@user) do |f| %>
-    <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+<h1>Edit Modifying Roles</h1>
+<h2>Creating New Admins</h2>
+<%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'update') do |f| %>
     <div class="field">
-      <%= f.label :username %>
+      <label>Enter Username:</label>
       <%= f.text_field :username %>
     </div>
     <br>
     <div class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.label :role %><br>
+      <%= f.select :role, options_for_select([["Select One", ""], "admin", "user"]) %>
     </div>
-    <br>
-    <div class="field">
-      <label>Password</label>
-      <%= f.text_field :password_hash %>
-    </div>
-    <br>
-    <div class="field">
-      <label>Confirm Password</label>
-      <%= f.text_field :password_salt %>
-    </div>
-    <br>
     <div class="actions">
+      <br>
       <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
     </div>
     <br>
-    <%= link_to 'Back to Login Page', users_path%>
+    <%= link_to 'Back to Login Page', dum_path%>
 <% end %>

@@ -1,0 +1,27 @@
+<% provide(:title, 'Modifying Rooms') %>
+<h1>Modifying Rooms</h1>
+<%= form_for(:user, url:addrooms_path) do |f| %>
+    <div class="field">
+      <label>Enter Room No:</label>
+      <%= f.text_field :username %>
+    </div>
+    <br>
+    <div class="field">
+      <label>Enter Building:</label>
+      <%= f.text_field :username %>
+    </div>
+    <br>
+    <div class="field">
+      <label>Enter Size:</label>
+      <%= f.text_field :username %>
+    </div>
+    <br>
+    <label>Are you sure you wish to add this room?</label>
+    <br>
+    <div class="actions">
+      <br>
+      <%= f.submit "Submit", class: 'btn btn-large btn-primary' %>
+    </div>
+    <br>
+    <%= link_to 'Back to Login Page', dum_path%>
+<% end %>

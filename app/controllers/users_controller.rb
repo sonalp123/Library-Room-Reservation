@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :admdel, :memsdel]
-  wrap_parameters :user, include: [:username, :email, :password_hash, :password_salt, :role]
+  before_action :set_user, only: [:show, :edit, :admdel, :memsdel]
+  wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :role]
 
   # GET /users
   # GET /users.json
@@ -22,9 +22,19 @@ class UsersController < ApplicationController
   end
 
   def admdel
+    @user = User.new
   end
 
   def memsdel
+    @user = User.new
+  end
+
+  def libuser
+
+  end
+
+  def addrooms
+
   end
 
   def admview
@@ -51,16 +61,17 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.new
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.role = 'user'
     respond_to do |format|
       if @user.save!
-        #sign_in @user
+        sign_in @user
         flash[:notice] = "#{params[:user][:username]} User was successfully created."
         format.html {redirect_to dumget_path}
         #format.json { render :dum, status: :created, location: @user }
@@ -72,17 +83,15 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     #@user_update = User.new(user_params)
     #@user = User.all.select {|u| u.username == params[:username]}
-    #@user = User.find(params[:username])
+    #@user = User.find_by_username(params[:user][:username])
+    @user = User.find_by_username(params[:user][:username])
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(params[:user][:role])
         flash[:success]="Profile updated"
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
         #format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -90,27 +99,22 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
-    @userdel = User.new(user_params)
-    @userdel.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully deleted.' }
-      format.json { head :no_content }
-
-  private
-    # Use callbacks to share common setup or const
+    @userdel = User.find_by_username(params[:user][:username])
+      if @userdel.destroy
+      respond_to do |format|
+        format.html { redirect_to dumget_path, notice: 'User was successfully deleted.' }
+        format.json { head :no_content }
+        end
     end
-  end
-
+end
   def set_user
-      @user = User.find(session[:user_id])
+      #@currentuser = User.find(session[:user_id])
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-      params.require(:user).permit(:username, :email, :password_hash, :password_salt, :role)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :role)
   end
 
   def reset

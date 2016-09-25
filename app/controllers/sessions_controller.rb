@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-    #session[:user_id] = @user.id
-  wrap_parameters :user, include: [:username, :email, :password_hash, :password_salt, :role]
+  wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :role]
 
     def new
       @user = User.new
@@ -8,12 +7,15 @@ class SessionsController < ApplicationController
 
     def create
       @user = User.find_by_email(params[:user][:email])
-      #@user = User.new(params[:user])
       if @user && @user.authenticate(params[:user][:password])
+        flash[:notice] = "You logged in"
         session[:user_id] = @user.id
-        #sign_in @user
-        redirect_to dumget_path
-        flash[:notice] = "Hi #{@current_user}"
+        session[:user_name] = @user.username
+        if @user.role == 'admin'
+          redirect_to dumget_path
+        else
+          redirect_to libuser_path
+        end
       else
         render 'new'
         flash[:error] = 'Invalid email/password combination'
@@ -30,7 +32,6 @@ class SessionsController < ApplicationController
     end
 
   def session_params
-    params.require( :user ).permit( :password_salt, :password_hash, :username, :email )
+    params.require(:user).permit( :password, :password_confirmation, :username, :email )
   end
 end
-
