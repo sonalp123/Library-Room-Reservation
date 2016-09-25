@@ -2,13 +2,7 @@ class SessionsController < ApplicationController
   wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :role]
 
     def new
-      if session[:user_id].nil?
-        @user = User.new
-      elsif @user.role == 'admin'
-          redirect_to dumget_path
-        else
-          redirect_to booking_histories_path
-      end
+      @user = User.new
     end
 
     def create
@@ -32,6 +26,8 @@ class SessionsController < ApplicationController
 
     def logout
       session[:user_id] = nil
+      session[:user_name] = nil
+      session[:user_role] = nil
       flash[:notice] = "You have successfully logged out."
       redirect_to home_url
     end

@@ -75,13 +75,11 @@ class UsersController < ApplicationController
     @user.role = 'user'
     respond_to do |format|
       if @user.save!
-        sign_in @user
-        flash[:notice] = "#{params[:user][:username]} User was successfully created."
-        format.html {redirect_to dumget_path}
+        flash[:notice] = "#{session[:username]} User was successfully created."
+        format.html {redirect_to root_path}
         #format.json { render :dum, status: :created, location: @user }
       else
-        flash[:notice] = "hi"
-        format.html { render :new }
+        format.html { render :root }
         #format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -92,14 +90,15 @@ class UsersController < ApplicationController
     #@user = User.all.select {|u| u.username == params[:username]}
     #@user = User.find_by_username(params[:user][:username])
     @user = User.new(user_params)
+    @user.username = session[:user_name]
     #@user = User.find_by_username(params[:user][:username])
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update!(user_params)
         flash[:success]="Profile updated"
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
       else
         flash[:notice]="Profile couldn't be updated. Please try again"
-        format.html { render :edit }
+        format.html { redirect_to booking_histories_url }
         #format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
