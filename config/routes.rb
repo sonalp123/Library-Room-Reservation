@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-   resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
 
   # You can have the root of your site routed with "root"
    get 'sessions/logout' => 'sessions#logout'
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
    get 'users/admview', to: 'users#admview', :as => 'admview'
    get 'users/memsview', to: 'users#memsview', :as => 'memsview'
    get 'users/libmems', to: 'users#libmems', :as => 'libmems'
+   get 'booking_histories/index', to: 'booking_histories#index', :as => 'booking_histories'
    get 'users/libuser', to: 'users#libuser', :as => 'libuser'
    get 'users/addrooms', to: 'users#addrooms', :as => 'addrooms'
    get 'users/memshist', to: 'users#memshist', :as => 'memshist'
@@ -24,7 +25,18 @@ Rails.application.routes.draw do
    post '/users/update',to: 'users#update', as: 'update_user'
    post '/users/create',to: 'users#create', as: 'create_user'
   #get '/users/index',to: 'users#index',as: 'users'
-   get '/signin', to: 'sessions#new'
+  post '/booking_histories/search',to: 'booking_histories#search',as: 'search_booking_history'
+  #resources :booking_histories, param: :room_num, :only => [:show, :new, :create, :index]
+  #resources :library_rooms
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+  get '/booking_histories/new',to: 'booking_histories#new',as: 'new_booking_history'
+  get '/booking_histories/edit',to: 'booking_histories#edit',as:'edit_booking_history'
+  get '/booking_histories/show', to: 'booking_histories#show', as: 'booking_history'
+  get '/booking_histories/destroy',to: 'booking_histories#destroy'
+  post '/booking_histories/create',to: 'booking_histories#create'
+
+  get '/signin', to: 'sessions#new'
    get '/signout', to: 'sessions#destroy', as: 'delete'
 
    #root 'users#index'

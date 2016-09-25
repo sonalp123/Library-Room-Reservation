@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         if @user.role == 'admin'
           redirect_to dumget_path
         else
-          redirect_to libuser_path
+          redirect_to booking_histories_path
         end
       else
         render 'new'
