@@ -31,9 +31,9 @@ Rails.application.routes.draw do
   get '/booking_histories/new',to: 'booking_histories#new',as: 'new_booking_history'
   get '/booking_histories/edit',to: 'booking_histories#edit',as:'edit_booking_history'
   get '/booking_histories/show', to: 'booking_histories#show', as: 'booking_history'
-  get '/booking_histories/destroy',to: 'booking_histories#destroy' ,as: 'destroy_booking_history'
+  post '/booking_histories/destroy',to: 'booking_histories#destroy' ,as: 'destroy_booking_history'
   post '/booking_histories/create',to: 'booking_histories#create'
-  get '/booking_histories/bookingdel', to: 'booking_histories#create' ,as: 'bookingdel_booking_history'
+  get '/booking_histories/bookingdel', to: 'booking_histories#bookingdel' ,as: 'bookingdel_booking_history'
 
   root 'sessions#new'
 end
