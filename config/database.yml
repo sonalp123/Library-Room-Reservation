@@ -23,8 +23,8 @@ default: &default
 
 development:
   <<: *default
-  database: untitled2_development
-  username: untitled2
+  database: final_development
+  username: final
   password: ncsu
 
   # The specified database role being used to connect to postgres.

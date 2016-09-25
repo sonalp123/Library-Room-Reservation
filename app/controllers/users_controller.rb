@@ -75,13 +75,11 @@ class UsersController < ApplicationController
     @user.role = 'user'
     respond_to do |format|
       if @user.save!
-        sign_in @user
-        flash[:notice] = "#{params[:user][:username]} User was successfully created."
-        format.html {redirect_to dumget_path}
+        flash[:notice] = "#{session[:username]} User was successfully created."
+        format.html {redirect_to root_path}
         #format.json { render :dum, status: :created, location: @user }
       else
-        flash[:notice] = "hi"
-        format.html { render :new }
+        format.html { render :root }
         #format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

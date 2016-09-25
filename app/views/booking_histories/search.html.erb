@@ -1,56 +1,56 @@
-<h2>Bookings for Date</h2>
-<% if @booking != nil %>
-    <%= @booking.date %>
-<% end %>
-<table>
-  <tr>
-    <th>Room Num </th>
-    <th>Username </th>
-    <th>Start Time</th>
-    <th>End Time</th>
-    <th> Size </th>
-    <th> Building </th>
-  </tr>
-  <% if @booked_list == nil %>
-      <h3>Bookings for these conditions empty</h3>
-  <% else %>
+<h2><%= "Bookings for Date:  #{@booking.date} " %></h2>
 
-      <% if (@booking.building == 'DH Hill' || @booking.building == 'Hunt' ) %>
-          <%= "Booking searched for building #{@booking.building}" %>
+<% l_rooms = Array.new %>
+<% size_rooms = Array.new %>
+<% start_times = Array.new %>
+<% if @booked_list == nil %>
+    <h3>Bookings for these conditions empty</h3>
+<% else %>
+    <% if (@booking.building == 'DH Hill' || @booking.building == 'Hunt' ) %>
+        <%= "Booking searched for building #{@booking.building}" %>
 
-          <% @list_building = LibraryRoom.joins("LEFT OUTER JOIN booking_histories ON library_rooms.number = booking_histories.room_num") %>
-          <% @booked_list = BookingHistory.where("booking_histories.building = ? AND date = ?",@booking.building,@booking.date ).order(:start_t) %>
+        <% @rooms_matching_library =  LibraryRoom.where("library_rooms.building = ?",@booking.building ) %>
+        <% @booked_list = BookingHistory.where("booking_histories.building = ? AND date = ?",@booking.building,@booking.date ).order(:start_t) %>
 
-      <% elsif @booking.size %>
-          <%= "Booking searched for size #{@booking.size}" %>
-          <% @list_size = LibraryRoom.joins("LEFT OUTER JOIN booking_histories ON library_rooms.number = booking_histories.room_num") %>
-          <% @booked_list = BookingHistory.where("booking_histories.size = ? AND date = ?",@booking.size,@booking.date ).order(:start_t) %>
-      <% end %>
+    <% elsif @booking.size %>
+        <%= "Booking searched for size #{@booking.size}" %>
+        <% @rooms_matching_library = LibraryRoom.where("library_rooms.size = ?",@booking.size ) %>
+        <% @booked_list = BookingHistory.where("booking_histories.size = ? AND date = ?",@booking.size,@booking.date ).order(:start_t) %>
+    <% end %>
 
+    <table border="1"  >
 
-      <% @booked_list.each do |data| %>
+      <%= render 'timegrid' %>
+
+      <% @rooms_matching_library.each do |room_l| %><!Loop 1 for room>
+          <% start_times = Array.new %>
+          <% end_times = Array.new %>
           <tr>
-            <td><%= data.room_num %></td>
-            <td><%= data.username %></td>
-            <td><%= data.start_t %></td>
-            <td><%= data.end_t %></td>
-            <td><%= data.size %></td>
-            <td><%= data.building %></td>
-          </tr>
+            <td><%= room_l.number %></td>
+            <td><%= room_l.building %></td>
+            <td><%= room_l.size %></td>
 
+            <% bl = @booked_list.where("booking_histories.room_num = ?",room_l.number ) %>
+            <% bl.each do |same_room| %>
+                <% start_times << same_room.start_t %>
+                <% end_times << same_room.end_t %>
+            <% end %>
+            <% (0..24).each do |hour| %>
+                <% if start_times.include?(hour) || end_times.include?(hour+1) %>
+                    <td bgcolor = #ff6347> Booked </td>
+                <% else %>
+                    <td bgcolor="#7fff00">Free</td>
+                <% end %>
+            <% end %>
+
+          </tr>
       <% end %>
-  <% end %>
-  <% if @booking.room_num != nil %>
-      <h2>Details of Room </h2>
-      <!% @location = LibraryRoom.select("building").where("number = ?",@booking.room_num) %>
-      <% @location = LibraryRoom.where("number = ?",@booking.room_num) %>
-      <% building_entry = @location.as_json[0]["building"] %>
-      <%= "Building : #{building_entry}" %></br>
-      <% @size = LibraryRoom.select("size").where("number = ?",@booking.room_num) %>
-      <% size_entry = @size.as_json[0]["size"] %>
-      <%= "Size : #{size_entry}" %>
-  <% end %>
-</table>
+    </table>
+    <h3>Fill in Details to Book</h3>
+
+<% end %>
+
+
 <%= form_for (@booking),:url=> url_for(:controller => 'booking_histories',:action =>'create') do |f| %>
 
     <% if session[:user_role] == "admin" %>
@@ -80,15 +80,7 @@
       <%= f.label :date %><br>
       <%= f.date_select :date %>
     </div>
-    <div class="field">
-      <%= f.label :building %><br>
-      <%= f.select :building, options_for_select([["Select One", ""], "DH Hill", "Hunt"]) %>
-    </div>
 
-    <div class="field">
-      <%= f.label :size %><br>
-      <%= f.select :size, options_for_select([["Select One", ""], "2", "4","6"])%>
-    </div><br>
     <div class="actions">
       <%= f.submit "Book" %>
       <%= link_to 'Back to Member Console', booking_histories_path%>

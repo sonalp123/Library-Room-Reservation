@@ -21,6 +21,7 @@ class BookingHistoriesController < ApplicationController
 
     #  bh.room_num == @booking.room_num && bh.date == @booking.date
     if params[:booking_history][:room_num]
+      @rooms_matching_library =  LibraryRoom.where("library_rooms.number = ?",@booking.room_num )
       @booked_list = BookingHistory.where("booking_histories.room_num = ? AND date = ?",@booking.room_num,@booking.date)
 
       #elsif params[:booking_history][:building]
@@ -56,7 +57,7 @@ class BookingHistoriesController < ApplicationController
   def create
     check = 0
     @booking_history = BookingHistory.new(booking_history_params)
-    @booking_history =
+   
     # @booked_list = BookingHistory.all
     #@booked_entry = @booked_list.select do |bh|
     # bh.room_num == @booking_history.room_num && bh.date == Date.today + 7.days
@@ -121,6 +122,7 @@ class BookingHistoriesController < ApplicationController
   # DELETE /booking_histories/1
   # DELETE /booking_histories/1.json
   def destroy
+    @booking_history = BookingHistory.find_by_id(params[:booking_history][:id])
     @booking_history.destroy
     respond_to do |format|
       format.html { redirect_to booking_histories_url, notice: 'Booking history was successfully destroyed.' }
@@ -139,6 +141,9 @@ class BookingHistoriesController < ApplicationController
     @hist_room = BookingHistory.where("room_num = ?",@booking_history.room_num).order(:start_t)
   end
 
+  def bookingdel
+    @booking_history = BookingHistory.new
+  end
   # Never trust parameters from the scary internet, only allow the white list through.
   def booking_history_params
     params.require(:booking_history).permit(:id, :username, :room_num, :start_t, :end_t, :date, :building, :size)
