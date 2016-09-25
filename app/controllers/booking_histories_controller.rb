@@ -62,6 +62,9 @@ class BookingHistoriesController < ApplicationController
     #@booked_entry = @booked_list.select do |bh|
     # bh.room_num == @booking_history.room_num && bh.date == Date.today + 7.days
     #end
+    @room_details = LibraryRoom.find_by_number(@booking_history.room_num)
+    @booking_history.building = @room_details.building
+    @booking_history.size = @room_details.size
     @booked_entry = BookingHistory.where("room_num = ? AND date = ?",@booking_history.room_num,@booking_history.date ).order(:start_t)
 
     @booked_entry.each do |entry|
