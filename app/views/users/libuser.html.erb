@@ -1,3 +1,4 @@
+<% provide(:title, 'Creating New Admins') %>
 <h1>Edit Modifying Roles</h1>
 <h2>Creating New Admins</h2>
 <%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'update') do |f| %>
@@ -15,5 +16,4 @@
       <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
     </div>
     <br>
-    <%= link_to 'Back to Admin Console', dum_path%>
 <% end %>

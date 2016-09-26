@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get '/users/edit',to: 'users#edit',as:'edit_user'
   get '/users/editprof',to: 'users#editprof',as:'editprof'
   get '/users/show', to: 'users#show', as: 'user'
+  get '/users/admincreation', to: 'users#admincreation', as: 'admincreation'
+  post '/users/adminupdate', to: 'users#adminupdate', as: 'adminupdate'
   get '/users/destroy',to: 'users#destroy'
   post '/users/update',to: 'users#update', as: 'update_user'
   post '/users/create',to: 'users#create', as: 'create_user'

@@ -9,6 +9,13 @@
 <body>
 <%= yield %>
 <br>
+<% if session[:user_role] == 'admin' %>
+    <br><%= link_to 'Back to Admin Console', dum_path%><br>
+<% elsif session[:user_role] == 'user' %>
+    <br><%= link_to 'Back to Member Console', booking_histories_path%><br>
+<% else %>
+  <br>
+<% end %><br>
 <%= link_to 'Logout', root_path %>
 </body>
 </html>

@@ -6,14 +6,14 @@
       <li><%= link_to 'My Account', editprof_path%></li><br>
       <label>Manage Admins</label><br>
       <ul><br>
-        <li><%= link_to 'Creating New Admins', edit_user_path%></li>
+        <li><%= link_to 'Creating New Admins', admincreation_path%></li>
         <li><%= link_to 'View All Admins', admview_path%></li>
         <li><%= link_to 'Deleting Admins', admdel_path%></li>
       </ul>
       <br><label>Manage Rooms</label><br>
       <ul><br>
         <li><%= link_to 'Manage Rooms', library_rooms_path%></li>
-        <li><%= link_to 'Book A Room', search_booking_history_path%></li>
+        <li><%= link_to 'Book A Room', new_booking_history_path%></li>
         <li><%= link_to 'View Rooms Reservation History', bkhist_booking_history_path%></li>
       </ul>
       <br><label>Manage Library Members</label><br>

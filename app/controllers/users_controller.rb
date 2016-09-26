@@ -52,6 +52,18 @@ class UsersController < ApplicationController
   def admincreation
     @user = User.new
   end
+
+  def adminupdate
+    @user = User.find_by_username(params[:user][:username])
+    respond_to do |format|
+      if @user.update_attribute(:role, 'admin')
+        format.html { redirect_to dum_path, notice: 'Updated successfully'}
+      else
+        format.html { redirect_to admincreation_path }
+       end
+    end
+  end
+
   # GET /users/new
   def new
     @user = User.new

@@ -1,3 +1,4 @@
+<% provide(:title, 'Search a Room') %>
 <h2><%= "Bookings for Date:  #{@booking.date} " %></h2>
 
 <% l_rooms = Array.new %>
@@ -83,6 +84,5 @@
 
     <div class="actions">
       <%= f.submit "Book" %>
-      <%= link_to 'Back to Member Console', booking_histories_path%>
     </div>
 <% end %>
