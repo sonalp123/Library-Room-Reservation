@@ -123,6 +123,14 @@ class BookingHistoriesController < ApplicationController
     end
   end
 
+  def bkhist
+    @booking_history = BookingHistory.new
+  end
+
+  def memshist
+    @booking_history = BookingHistory.new(booking_history_params)
+  end
+
   # DELETE /booking_histories/1
   # DELETE /booking_histories/1.json
   def destroy

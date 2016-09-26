@@ -43,18 +43,12 @@ class UsersController < ApplicationController
 
   def admview
     @user = User.new
-    @admall = User.find_by_role("admin")
   end
 
   def memsview
     @user = User.new
-    @memsall = User.find_by_role("user")
   end
 
-  def memshist
-    @user = User.new
-   # @memshistall = BookingHistory.find_by_role("username")
-  end
   def admincreation
     @user = User.new
   end
@@ -109,14 +103,19 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @userdel = User.find_by_username(params[:user][:username])
-      if @userdel.destroy
-      respond_to do |format|
-        format.html { redirect_to dumget_path, notice: 'User was successfully deleted.' }
-        format.json { head :no_content }
+      @userdel = User.find_by_username(params[:user][:username])
+      if (@userdel.username != session[:user_name]) && (@userdel.username != "Superadmin")
+        if @userdel.destroy
+          respond_to do |format|
+            format.html { redirect_to dumget_path, notice: 'User was successfully deleted.' }
+            format.json { head :no_content }
+            end
         end
-    end
-end
+      else
+        flash[:notice] = 'User cannot be deleted'
+      end
+  end
+
   def set_user
       @currentuser = User.find_by_username(session[:user_name])
   end

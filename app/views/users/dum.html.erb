@@ -13,12 +13,13 @@
       <br><label>Manage Rooms</label><br>
       <ul><br>
         <li><%= link_to 'Manage Rooms', library_rooms_path%></li>
-        <li><%= link_to 'View Rooms Booking History', viewhist_path%></li>
+        <li><%= link_to 'Book A Room', search_booking_history_path%></li>
+        <li><%= link_to 'View Rooms Reservation History', bkhist_booking_history_path%></li>
       </ul>
       <br><label>Manage Library Members</label><br>
       <ul><br>
         <li><%= link_to 'View All Members', memsview_path%></li>
-        <li><%= link_to 'View Reservation History', memshist_path%></li>
+        <li><%= link_to 'View Members Reservation History', bkhist_booking_history_path%></li>
         <li><%= link_to 'Delete Members', memsdel_path%></li>
       </ul>
       </ul>

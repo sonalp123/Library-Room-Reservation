@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   get 'booking_histories/index', to: 'booking_histories#index', :as => 'booking_histories'
   get 'users/libuser', to: 'users#libuser', :as => 'libuser'
   get 'users/addrooms', to: 'users#addrooms', :as => 'addrooms'
-  get 'users/memshist', to: 'users#memshist', :as => 'memshist'
-  get 'booking_histories/viewhist', to: 'booking_histories#viewhist', :as => 'viewhist'
+  #get 'booking_histories/viewhist', to: 'booking_histories#viewhist', :as => 'viewhist'
   get 'users/memsdel', to: 'users#memsdel', :as => 'memsdel'
   get '/users/index',to: 'users#index',as: 'users'
   post '/users/delete', to: 'users#destroy', as: 'del_user'
@@ -34,6 +33,8 @@ Rails.application.routes.draw do
   post '/booking_histories/destroy',to: 'booking_histories#destroy' ,as: 'destroy_booking_history'
   post '/booking_histories/create',to: 'booking_histories#create'
   get '/booking_histories/bookingdel', to: 'booking_histories#bookingdel' ,as: 'bookingdel_booking_history'
+  get '/booking_histories/bkhist', to: 'booking_histories#bkhist' ,as: 'bkhist_booking_history'
+  post '/booking_histories/memshist', to: 'booking_histories#memshist' ,as: 'memshist'
 
   root 'sessions#new'
 end

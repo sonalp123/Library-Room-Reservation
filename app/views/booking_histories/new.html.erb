@@ -1,6 +1,7 @@
 <% provide(:title, 'Search Rooms') %>
 <h1>Search a Room</h1>
 <%= form_for (@booking_history),:url=> url_for(:controller => 'booking_histories',:action =>'search') do |f| %>
+    <br><label>Enter date</label><br>
     <div class="field">
       <%= f.label :date %><br>
       <%= f.date_select :date %>
