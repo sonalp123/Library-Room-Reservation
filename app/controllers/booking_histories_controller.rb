@@ -41,7 +41,7 @@ class BookingHistoriesController < ApplicationController
   # GET /booking_histories/1.json
   # @return [Object]
   def show
-    @booking_history = BookingHistory.find(params[:room_num])
+    @booking_history = BookingHistory.where("booking_histories.username = ?",session[:user_name]).order(:date)
   end
 
 
