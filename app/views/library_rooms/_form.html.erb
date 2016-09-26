@@ -18,12 +18,12 @@
     <br>
     <div class="field">
       <%= f.label :building %><br>
-      <%= f.text_field :building %>
+      <%= f.select :building, options_for_select([["Select One", ""], "DH Hill", "Hunt"])%>
     </div>
     <br>
     <div class="field">
       <%= f.label :size %><br>
-      <%= f.number_field :size %>
+      <%= f.select :size, options_for_select([["Select One", ""], "2", "4","6"])%>
     </div>
     <br>
     <div class="actions">

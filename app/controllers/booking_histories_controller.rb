@@ -57,7 +57,7 @@ class BookingHistoriesController < ApplicationController
   def create
     check = 0
     @booking_history = BookingHistory.new(booking_history_params)
-
+   
     # @booked_list = BookingHistory.all
     #@booked_entry = @booked_list.select do |bh|
     # bh.room_num == @booking_history.room_num && bh.date == Date.today + 7.days
