@@ -1,15 +1,17 @@
 <% provide(:title, 'Search History') %>
 <h1>Search History</h1>
 <%= form_for (@booking_history),:url=> url_for(:controller => 'booking_histories',:action =>'memshist') do |f| %>
-    <br><label>Enter room number OR username for viewing booking history</label><br>
+    <br>
     <div class="field">
       <%= f.label :room_num %><br>
       <%= f.text_field :room_num%>
     </div><br>
+    <label>OR</label><br>
     <div class="field">
       <%= f.label :username %><br>
       <%= f.text_field :username %>
     </div><br>
+    <label>OR</label><br>
     <div class="actions">
       <%= f.submit "Search" %>
     </div><br>

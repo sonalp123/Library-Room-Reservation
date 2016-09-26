@@ -1,24 +1,24 @@
 <% provide(:title, 'Search Rooms') %>
 <h1>Search a Room</h1>
 <%= form_for (@booking_history),:url=> url_for(:controller => 'booking_histories',:action =>'search') do |f| %>
-    <br><label>Enter date</label><br>
+    <label>Enter date</label><br><br>
     <div class="field">
-      <%= f.label :date %><br>
+      <%= f.label :date %>
       <%= f.date_select :date %>
     </div><br>
     <h3>Search rooms based on Room number, size or building</h3>
     <div class="field">
-      <%= f.label :room_num %><br>
+      <%= f.label :room_num %>
       <%= f.number_field :room_num %>
     </div>
     <br><label>OR</label><br>
     <br><div class="field">
-      <%= f.label :building %><br>
+      <%= f.label :building %>
       <%= f.select :building, options_for_select([["Select One", ""], "DH Hill", "Hunt"])%>
     </div>
     <br><label>OR</label><br>
     <br><div class="field">
-      <%= f.label :size %><br>
+      <%= f.label :size %>
       <%= f.select :size, options_for_select([["Select One", ""], "2", "4","6"])%>
     </div><br>
     <div class="actions">
