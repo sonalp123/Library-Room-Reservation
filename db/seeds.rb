@@ -8,6 +8,7 @@
 User.create(username: "Superadmin", email: 'admin@lib.com', role: "admin", password: "admin", password_confirmation: "admin")
 User.create(username: "admin", email: 'admins@lib.com', role: "admin", password: "admins", password_confirmation: "admins")
 User.create(username: "libadmin", email: 'libadmin@lib.com', role: "admin", password: "libadmin", password_confirmation: "libadmin")
+User.create(username: "libuser", email: 'libuser@lib.com', role: "user", password: "libuser", password_confirmation: "libuser")
 LibraryRoom.create(number: 200, building: 'Hunt', size: 2)
 LibraryRoom.create(number: 300, building: 'Hunt', size: 4)
 LibraryRoom.create(number: 400, building: 'Hunt', size: 6)

@@ -99,7 +99,8 @@ class UsersController < ApplicationController
     #@user.username = session[:user_name]
     #@user = User.find_by_username(params[:user][:username])
     respond_to do |format|
-      if @currentuser.update(user_params)
+      if @currentuser.username != "Superadmin"
+        if @currentuser.update(user_params)
         flash[:success]="Profile updated"
         if @currentuser.role == "admin"
           format.html { redirect_to dum_url, notice: 'User was successfully updated.' }
@@ -110,8 +111,11 @@ class UsersController < ApplicationController
         flash[:notice]="Profile couldn't be updated. Please try again"
         format.html { redirect_to booking_histories_url }
         #format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+        else
+        format.html { redirect_to dum_url, notice: 'Superadmin cannot be updated.'}
+        end
       end
-    end
   end
 
   def destroy
