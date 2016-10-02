@@ -1,6 +1,5 @@
 <% provide(:title, 'My Account') %>
-<p id="notice"><%= notice %></p>
-<div align = "left"><h3><p id="notice">Hello <%= session[:user_name] %>!</p></h3></div>
+<div align = "left"><h3>Hello <%= session[:user_name] %>!</h3></div>
 <h1>My Account</h1>
 <ul>
   <li><%= link_to 'Make A New Booking', new_booking_history_path %></li>
