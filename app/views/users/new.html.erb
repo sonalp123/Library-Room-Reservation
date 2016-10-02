@@ -14,17 +14,16 @@
     <br>
     <div class="field">
       <%= f.label :password %>
-      <%= f.text_field :password %>
+      <%= f.password_field :password %>
     </div>
     <br>
     <div class="field">
       <%= f.label :password_confirmation %>
-      <%= f.text_field :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
     </div>
     <br>
   <div class="actions">
     <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
   </div>
     <br>
-<%= link_to 'Back to Login Page', users_path%>
 <% end %>

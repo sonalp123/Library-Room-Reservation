@@ -89,7 +89,11 @@ class BookingHistoriesController < ApplicationController
       if check ==0
         if (@booking_history.save)
           flash[:notice] = "Booking was successfully created. Booking id #{@booking_history.id}"
-          format.html { redirect_to booking_histories_path}
+          if session[:user_role] == 'admin'
+            format.html { redirect_to dum_path}
+            else
+              format.html { redirect_to booking_histories_path}
+              end
           # format.json { render :show, status: :created, location: @booking_history }
         else
           flash[:notice] = "Booking was failed. Booking id #{@booking_history.id}"
@@ -121,6 +125,14 @@ class BookingHistoriesController < ApplicationController
         format.json { render json: @booking_history.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def bkhist
+    @booking_history = BookingHistory.new
+  end
+
+  def memshist
+    @booking_history = BookingHistory.new(booking_history_params)
   end
 
   # DELETE /booking_histories/1

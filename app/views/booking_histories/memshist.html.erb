@@ -1,0 +1,43 @@
+<% provide(:title, 'Reservation History') %>
+<h1>Reservation History</h1>
+<%= form_for (@booking_history) do |f| %>
+    <% if @booking_history.room_num %>
+        <br><%= "Booking searched for Room Number #{@booking_history.room_num}" %><br>
+        <% @bl1=  BookingHistory.where("booking_histories.room_num = ?",@booking_history.room_num ) %>
+    <% else %>
+        <%= "Booking searched for User #{@booking_history.username}" %><br>
+        <% @bl1 = BookingHistory.where("booking_histories.username = ?",@booking_history.username) %>
+    <% end %>
+    <br>
+    <table border="2">
+      <tr>
+        <% if @booking_history.room_num %>
+            <th>Username</th>
+        <% else %>
+            <th>Room Num</th>
+        <% end %>
+        <th>Booking Id</th>
+        <th>Building</th>
+        <th>Size</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </tr>
+      <% @bl1.each do |mem| %>
+          <tr>
+            <% if @booking_history.room_num %>
+                <td><%= "#{mem.username}" %></td>
+            <% else %>
+                <td><%= "#{mem.room_num}" %></td>
+            <% end %>
+            <td><%= "#{mem.id}" %></td>
+            <td><%= "#{mem.building}" %></td>
+            <td><%= "#{mem.size}" %></td>
+            <td><%= "#{mem.date}" %></td>
+            <td><%= "#{mem.start_t}" %></td>
+            <td><%= "#{mem.end_t}" %></td>
+          </tr>
+      <% end %>
+    </table>
+    <br>
+<% end %>

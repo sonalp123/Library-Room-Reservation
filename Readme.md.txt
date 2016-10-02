@@ -1,0 +1,73 @@
+﻿Library Room Reservation Application:
+
+
+Introduction : A Ruby on Rails application to book study rooms in NC State libraries. The application is deployed on Heroku.
+
+
+Landing Page:
+The user needs to sign up and create an account to be able to book a room in the Library Reservation App.
+Once signed up, the user needs to login with his/her email and password.
+There are two roles of a user : Library Member or Admin.
+There are two separate consoles for Admin and Library Members
+
+
+Library User Functionalities :
+
+
+1. New Booking Process :
+Once user selects the new booking link, he is asked to enter the date for which he needs to book a room.
+He has the option of entering room number/ library building/ size of room to query results for availability of rooms.
+The result is shown for that particular date in the form of a time duration grid. According to the query, resulting rooms are retrieved and are showcased in the form of a table indicating when it is free/booked. The table also describes the room in terms of its location building and its size.
+The user can accordingly fill in the room number with the start and end time in the reservation form.
+If a room gets booked successfully , a booking id is displayed.
+ Room reservation is successful if :
+1. Reservation is made for maximum 2 hours.
+2. Room is booked for a date which falls within the week.
+The reservation can fail if username , start time ,end time , date: any one of these is left blank. It can also fail if the reasons above are not satisfied.
+
+
+2.Release a Booking:
+A user can choose to cancel  his/her booking.
+User needs to click on Release a Booking link and he will be shown a list of all his booking sorted according to date with their booking ids.
+User needs to enter the booking id for which he needs to cancel the reservation.
+The reservation entry will then be deleted from the records.
+
+
+3.View Booking History :
+User can see his own bookings, sorted by date.
+
+
+4.Edit Profile :
+User can change his/her registered email id or  password . Username will remain the same.
+
+
+Admin Functionality :
+
+
+1.Managing members : 
+Default Admin (Super admin in this case) can add more admins.
+View all admins
+Delete admins by entering username
+
+
+2,Manage rooms :
+Admin can add/delete/edit a room. Admin can book a room on behalf of another user. Admin can view booking histories corresponding to any room which he wishes to see.
+
+
+3.Manage Library Members:
+Admin can view profile of all members. He can see bookings corresponding to each user.Admin can delete user/another admin  too.
+
+
+Note : There are the following predefined database entries which have been mentioned in seeds.rb file.
+1. The super admin with credentials Admin Role :
+             Default admin credential:username : Superadmin
+            Email : admin@lib.com
+            Password : admin
+
+
+      2.LibraryRoom.create(number: 200, building: 'Hunt', size: 2)
+     3. LibraryRoom.create(number: 300, building: 'Hunt', size: 4)
+     4.LibraryRoom.create(number: 400, building: 'Hunt', size: 6)
+     5.LibraryRoom.create(number: 250, building: 'DH Hill', size: 2)
+     6.LibraryRoom.create(number: 350, building: 'DH Hill', size: 4)
+     7.LibraryRoom.create(number: 450, building: 'DH Hill', size: 6)

@@ -1,8 +1,18 @@
-<%= form_for (@user),:url=> url_for(:controller => 'users',:action =>'admview') do |f| %>
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Name:</strong>
-  <%= @admall.inspect %>
-</p>
+<% provide(:title, 'Admin Console') %>
+<h1>Admin Details</h1>
+<%= form_for (@user) do |f| %>
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+      </tr>
+      <% @admall = User.where("role= ?", 'admin') %>
+      <% @admall.each do |mem| %>
+          <tr>
+            <td><%= "#{mem.username}" %></td>
+            <td><%= "#{mem.email}" %></td>
+          </tr>
+      <%end%>
+    </table>
     <%= link_to 'Back to Admin Console', dumget_path%>
 <%end%>

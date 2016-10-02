@@ -1,3 +1,4 @@
+<% provide(:title, 'Search a Room') %>
 <h2><%= "Bookings for Date:  #{@booking.date} " %></h2>
 
 <% l_rooms = Array.new %>
@@ -47,10 +48,7 @@
       <% end %>
     </table>
     <h3>Fill in Details to Book</h3>
-
 <% end %>
-
-
 <%= form_for (@booking),:url=> url_for(:controller => 'booking_histories',:action =>'create') do |f| %>
 
     <% if session[:user_role] == "admin" %>
@@ -58,31 +56,30 @@
           <%= f.label :username %>
           <%= f.text_field :username %>
         </div>
-    <% else %>
+    <% else %><br>
         <div class="field">
           <%= f.label :username %>
           <%= f.label session[:user_name] %>
         </div>
-    <% end %>
+    <% end %><br>
     <div class="field">
       <%= f.label :room_num %><br>
       <%= f.number_field :room_num %>
-    </div>
+    </div><br>
     <div class="field">
       <%= f.label :start_time_t %><br>
       <%= f.select :start_t,options_for_select(1..23) %>
-    </div>
+    </div><br>
     <div class="field">
       <%= f.label :end_time %><br>
       <%= f.select :end_t ,options_for_select(1..23)%>
-    </div>
+    </div><br>
     <div class="field">
       <%= f.label :date %><br>
       <%= f.date_select :date %>
-    </div>
+    </div><br>
 
     <div class="actions">
       <%= f.submit "Book" %>
-      <%= link_to 'Back to Member Console', booking_histories_path%>
     </div>
 <% end %>

@@ -1,7 +1,7 @@
-<% provide(:title, 'Rooms Listing') %>
+<% provide(:title, 'Rooms Listings') %>
 <p id="notice"><%= notice %></p>
 <h2>Complete Listing of Library Rooms</h2>
-<table>
+<table border="2">
   <thead>
   <tr>
     <th>Number</th>
@@ -19,13 +19,12 @@
         <td><%= library_room.size %></td>
         <td><%= link_to 'Show', library_room %></td>
         <td><%= link_to 'Edit', edit_library_room_path(library_room) %></td>
-        <td><%= link_to 'View Booking History', viewhist_path(library_room) %></td>
         <td><%= link_to 'Destroy', library_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
   </tbody>
-</table>
-<br>
-<%= link_to 'Back to Admin Console', dumget_path%>
+</table><br>
 <br>
 <%= link_to 'Add New Library Room', new_library_room_path %>
+<br>
+
