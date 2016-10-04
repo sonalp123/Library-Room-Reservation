@@ -37,6 +37,17 @@ Rails.application.routes.draw do
   get '/booking_histories/bookingdel', to: 'booking_histories#bookingdel' ,as: 'bookingdel_booking_history'
   get '/booking_histories/bkhist', to: 'booking_histories#bkhist' ,as: 'bkhist_booking_history'
   post '/booking_histories/memshist', to: 'booking_histories#memshist' ,as: 'memshist'
+  get '/booking_histories/modify', to: 'booking_histories#modify' ,as: 'modify'
+
+  get '/notifs/addteam', to: 'notifs#addteam' ,as: 'addteam'
+  post '/notifs/newteam', to: 'notifs#newteam' ,as: 'newteam'
+  post '/notifs/create', to: 'notifs#create' ,as: 'create_notif'
+  get '/notifs/update', to: 'notifs#update' ,as: 'update_notif'
+  get '/notifs/index', to: 'notifs#index' ,as: 'index_notif'
+  get '/notifs/edit', to: 'notifs#edit' ,as: 'edit_notif'
+  get '/notifs/new', to: 'notifs#new' ,as: 'new_notif'
+  get '/notifs/destroy', to: 'notifs#destroy' ,as: 'destroy_notif'
+  get '/notifs/show', to: 'notifs#show' ,as: 'show_notif'
 
   root 'sessions#new'
 end

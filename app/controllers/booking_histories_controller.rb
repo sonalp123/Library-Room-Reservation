@@ -6,6 +6,7 @@ class BookingHistoriesController < ApplicationController
 
   def index
     @booking_histories = BookingHistory.all
+
   end
 
   def new
@@ -44,9 +45,9 @@ class BookingHistoriesController < ApplicationController
     @booking_history = BookingHistory.where("booking_histories.username = ?",session[:user_name]).order(:date)
   end
 
-
-  # GET /booking_histories/new
-
+  def addteam
+    @booking_history = BookingHistory.where("booking_histories.username = ?",session[:user_name]).order(:date)
+  end
 
   # GET /booking_histories/1/edit
   def edit
@@ -96,7 +97,7 @@ class BookingHistoriesController < ApplicationController
               end
           # format.json { render :show, status: :created, location: @booking_history }
         else
-          flash[:notice] = "Booking was failed. Booking id #{@booking_history.id}"
+          flash[:notice] = "Booking failed. Booking id #{@booking_history.id}"
           format.html { redirect_to booking_histories_path }
           # format.json { render json: @booking_history.errors, status: :unprocessable_entity }
         end

@@ -10,15 +10,14 @@
 <body>
 <%= yield %>
 <br>
-<% if current_page?(root_path) %>
-<br>
+<% if current_page?(root_path) || current_page?(dum_path) || current_page?(booking_histories_path)%>
     <% else %>
     <% if session[:user_role] == 'admin' %>
         <br><%= link_to 'Back to Admin Console', dum_path%><br>
         <% else %>
         <br><%= link_to 'Back to Member Console', booking_histories_path%><br>
     <% end %>
+<% end %>
     <br><%= link_to 'Logout', root_path %>
-    <% end %>
 </body>
 </html>

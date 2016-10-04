@@ -19,7 +19,7 @@
         <td><%= library_room.size %></td>
         <td><%= link_to 'Show', library_room %></td>
         <td><%= link_to 'Edit', edit_library_room_path(library_room) %></td>
-        <td><%= link_to 'Destroy', library_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', library_room_path(library_room)%></td>
       </tr>
   <% end %>
   </tbody>

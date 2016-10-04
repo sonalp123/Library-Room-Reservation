@@ -1,9 +1,12 @@
 <% provide(:title, 'My Account') %>
+<p id="notice"><%= notice %></p>
 <div align = "left"><h3>Hello <%= session[:user_name] %>!</h3></div>
+<br><div align = "left"><h3><%= link_to 'New Message', index_notif_url%></h3></div>
 <h1>My Account</h1>
 <ul>
   <li><%= link_to 'Make A New Booking', new_booking_history_path %></li>
   <li><%= link_to 'Release a Booking', bookingdel_booking_history_path %></li>
   <li><%= link_to 'View Booking History', booking_history_path %></li>
+  <li><%= link_to 'Inform Teammates of Existing Booking', addteam_path %></li>
   <li><%= link_to 'Edit Profile', editprof_url %></li>
 </ul>

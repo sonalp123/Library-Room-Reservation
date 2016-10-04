@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1> Your Booking History </h1>
+<h1> Your Upcoming Bookings </h1>
 <table border="2">
   <tr>
     <th>Booking Id</th>
@@ -9,8 +9,8 @@
     <th>Date</th>
     <th>Start Time</th>
     <th>End Time</th>
-    </tr>
-<% @booking_history.each do |mem| %>
+  </tr>
+  <% @booking_history.each do |mem| %>
       <tr>
         <td><%= "#{mem.id}" %></td>
         <td><%= "#{mem.room_num}" %></td>
@@ -19,8 +19,14 @@
         <td><%= "#{mem.date}" %></td>
         <td><%= "#{mem.start_t}" %></td>
         <td><%= "#{mem.end_t}" %></td>
-        </tr>
-      <% end %>
+      </tr>
+  <% end %>
 </table>
 
-<br>
+<%= form_for (@notif),:url=> url_for(:controller => 'notifs',:action =>'newteam') do |f| %>
+<div class="field">
+  <label>Enter Teammate:</label>
+  <%= f.text_field :username %>
+</div><br>
+    <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+<% end %>

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       @user = User.find_by_email(params[:user][:email])
       if @user && @user.authenticate(params[:user][:password])
         flash[:notice] = "You logged in"
-        session[:user_id] = @user.id
+        #session[:user_id] = @user.id
         session[:user_name] = @user.username
         session[:user_role] = @user.role
         if @user.role == 'admin'
