@@ -1,6 +1,7 @@
 class BookingHistoriesController < ApplicationController
   #before_action :set_booking_history, only: [:show, :edit, :update, :destroy, :search]
 
+
   # GET /booking_histories
   # GET /booking_histories.json
 

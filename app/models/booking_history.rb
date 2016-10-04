@@ -1,5 +1,6 @@
 require 'date'
 class BookingHistory < ActiveRecord::Base
+  belongs_to :user
   def date_within_week
     if(date > Date.today + 7.days)
       errors.add(:date,"Booking cannot be created for more than a week")

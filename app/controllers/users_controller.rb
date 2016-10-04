@@ -120,6 +120,8 @@ class UsersController < ApplicationController
 
   def destroy
       @userdel = User.find_by_username(params[:user][:username])
+
+
       if (@userdel.username != session[:user_name]) && (@userdel.username != "Superadmin")
         if @userdel.destroy
           respond_to do |format|
@@ -130,6 +132,7 @@ class UsersController < ApplicationController
       else
         flash[:notice] = 'User cannot be deleted'
       end
+
   end
 
   def set_user

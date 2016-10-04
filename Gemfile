@@ -6,6 +6,8 @@ gem 'rails', '4.2.5.1'
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+#gem 'foreigner'
+#gem 'mailboxer', :git => 'git://github.com/div/mailboxer.git', :branch => 'rails42-foreigner'
 
 gem 'bcrypt-ruby'
 # Use Uglifier as compressor for JavaScript assets
