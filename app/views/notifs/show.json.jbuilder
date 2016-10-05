@@ -1,0 +1,1 @@
+json.partial! "notifs/notif", notif: @notif

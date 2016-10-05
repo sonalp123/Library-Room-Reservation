@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @notif.username %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @notif.message %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @notif.date %>
+</p>
+
+<p>
+  <strong>Sender:</strong>
+  <%= @notif.sender %>
+</p>
+
+<p>
+  <strong>Read:</strong>
+  <%= @notif.read %>
+</p>
+
+<!%= link_to 'Edit', edit_notif_path(@notif) %> |
+<!%= link_to 'Back', notifs_path %>

@@ -1,0 +1,1 @@
+json.array! @notifs, partial: 'notifs/notif', as: :notif

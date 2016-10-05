@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  message: MyText
+  date: 2016-10-04
+  sender: MyString
+  read: false
+
+two:
+  username: MyString
+  message: MyText
+  date: 2016-10-04
+  sender: MyString
+  read: false
