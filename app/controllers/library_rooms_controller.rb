@@ -55,12 +55,18 @@ class LibraryRoomsController < ApplicationController
   end
 
   def destroy
-    @library_room.destroy
+    #@library_room = LibraryRoom.find_by(params[:library_room][:id])
     respond_to do |format|
-      format.html { redirect_to library_rooms_url, notice: 'Library room was successfully deleted.' }
-      format.json { head :no_content }
+      if @library_room.destroy
+        format.html { redirect_to dum_url, notice: 'Library room was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to dum_path, notice: 'Library room was not deleted.' }
+        format.json { head :no_content }
+    end
     end
   end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.

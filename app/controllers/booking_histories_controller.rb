@@ -165,6 +165,15 @@ class BookingHistoriesController < ApplicationController
   def bookingdel
     @booking_history = BookingHistory.new
   end
+
+  def deleteexisitingbooking
+    @booking_history = BookingHistory.find_by_id(params[:booking_history][:id])
+    @booking_history.destroy
+    respond_to do |format|
+      format.html { redirect_to booking_histories_url, notice: 'Booking history deleted successfully.' }
+      format.json { head :no_content }
+    end
+  end
   # Never trust parameters from the scary internet, only allow the white list through.
   def booking_history_params
     params.require(:booking_history).permit(:id, :username, :room_num, :start_t, :end_t, :date, :building, :size)

@@ -1,4 +1,5 @@
 <% provide(:title, 'Sign in') %>
+<p id="notice"><%= notice %></p>
 <h2>Sign in</h2>
 <%= form_for (@user) ,:url=> url_for(:controller => 'sessions',:action =>'create') do |f| %>
     <br><div class="field">

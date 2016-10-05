@@ -120,6 +120,14 @@ class UsersController < ApplicationController
         end
       end
   end
+  def checkexitinguser
+    @user = User.find(params[:id])
+    if (@user != null)
+      flash[:notice]="User does not exist. Please sign up"
+    else
+      flash[:notice]="Please enter password"
+    end
+  end
 
   def destroy
       @userdel = User.find_by_username(params[:user][:username])
