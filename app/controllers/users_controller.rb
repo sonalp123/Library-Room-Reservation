@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   end
 
   def addrooms
-
   end
 
   def admview
@@ -56,10 +55,10 @@ class UsersController < ApplicationController
   def adminupdate
     @user = User.find_by_username(params[:user][:username])
     respond_to do |format|
-      if @user.update_attribute(:role, 'admin')
+      if @user.update_attribute(:role, 'admin') or @user.update_attribute(:role, 'user')
         format.html { redirect_to dum_path, notice: 'Updated successfully'}
       else
-        format.html { redirect_to admincreation_path }
+          format.html { redirect_to admincreation_path }
        end
     end
   end

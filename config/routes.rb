@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'users/memsview', to: 'users#memsview', :as => 'memsview'
   get 'users/libmems', to: 'users#libmems', :as => 'libmems'
   get 'booking_histories/index', to: 'booking_histories#index', :as => 'booking_histories'
+
   get 'users/libuser', to: 'users#libuser', :as => 'libuser'
   get 'users/addrooms', to: 'users#addrooms', :as => 'addrooms'
   #get 'booking_histories/viewhist', to: 'booking_histories#viewhist', :as => 'viewhist'
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
   get '/users/destroy',to: 'users#destroy'
   post '/users/update',to: 'users#update', as: 'update_user'
   post '/users/create',to: 'users#create', as: 'create_user'
+  get '/users/new', to: 'users#new', as: 'get_user'
+
   post '/booking_histories/search',to: 'booking_histories#search',as: 'search_booking_history'
   get '/sessions/index', to: 'sessions#index', as: 'loggingout'
   get '/sessions/new', to: 'sessions#new', as: 'home'
