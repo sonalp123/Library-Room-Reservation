@@ -8,6 +8,7 @@ gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
 #gem 'foreigner'
 #gem 'mailboxer', :git => 'git://github.com/div/mailboxer.git', :branch => 'rails42-foreigner'
+gem 'bootstrap-sass' , '3.3.6'
 
 gem 'bcrypt-ruby'
 # Use Uglifier as compressor for JavaScript assets
