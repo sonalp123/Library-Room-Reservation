@@ -1,5 +1,6 @@
 class LibraryRoomsController < ApplicationController
   before_action :set_library_room, only: [:show, :edit, :update, :destroy]
+ # wrap_parameters :library_room, include: [:number, :id, :building, :size]
 
   # GET /library_rooms
   # GET /library_rooms.json
@@ -25,6 +26,7 @@ class LibraryRoomsController < ApplicationController
   # POST /library_rooms.json
   def create
     @library_room = LibraryRoom.new(library_room_params)
+    @library_room.id = @library_room.number
     if @library_room.number > 0
     respond_to do |format|
       if @library_room.save

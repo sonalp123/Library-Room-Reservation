@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :library_rooms
-
+  post '/booking_histories/create',to: 'booking_histories#create'
   get 'sessions/logout' => 'sessions#logout'
   post 'users/dum', to: 'users#dum', :as => 'dum'
   get 'users/dum', to: 'users#dum', :as => 'dumget'
@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   get '/notifs/new', to: 'notifs#new' ,as: 'new_notif'
   get '/notifs/destroy', to: 'notifs#destroy' ,as: 'destroy_notif'
   get '/notifs/show', to: 'notifs#show' ,as: 'show_notif'
+
 
   root 'sessions#new'
 end
