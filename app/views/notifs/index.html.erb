@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% provide(:title, 'My Inbox') %>
 <h1>Inbox</h1>
 
 <table border="2">
@@ -20,7 +20,11 @@
             <td><%= notif.sender %></td>
             <td><%= notif.message %></td>
             <td><%= notif.date %></td>
-            <td><%= notif.read %></td>
+            <% if notif.read == "false" %>
+                <td bgcolor = "#7fff00"></td>
+            <% else %>
+                <td bgcolor="ff6347"></td>
+            <% end %>
             <td><%= link_to 'Show', show_notif_path(notif) %></td>
             <td><%= link_to 'Edit', edit_notif_path(notif) %></td>
             <td><%= link_to 'Delete', destroy_notif_path(notif) %></td>

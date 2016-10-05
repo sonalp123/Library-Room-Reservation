@@ -1,5 +1,6 @@
 <% provide(:title, 'Admin Console') %>
-<div align="left"><h3><p id="notice">Hello <%= session[:user_name] %>!</p></h3></div>
+<div align="left"><h3>Hello <%= session[:user_name] %>!</h3></div>
+<p id="notice"><%= notice %></p>
 <h2>Admin Console</h2>
 <%= form_for(:user, url:dum_path) do |f| %>
     <ul>
@@ -7,7 +8,7 @@
       <label>Manage Admins</label><br>
       <ul><br>
         <li><%= link_to 'Changing permissions of Members', admincreation_path%></li>
-        <li><!%= link_to 'Add Library Members', new_user_path%></li>
+        <li><%= link_to 'Add Library Members', new_user_path%></li>
         <li><%= link_to 'View All Admins', admview_path%></li>
         <li><%= link_to 'Deleting Admins', admdel_path%></li>
       </ul>

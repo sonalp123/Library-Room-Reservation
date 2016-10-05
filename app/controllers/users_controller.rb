@@ -81,7 +81,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save!
         flash[:notice] = "#{session[:username]} User was successfully created."
-        format.html {redirect_to root_path}
+        if session[:user_role] == 'admin'
+          format.html {redirect_to dum_path}
+          else
+            format.html {redirect_to root_path}
+            end
         #format.json { render :dum, status: :created, location: @user }
       else
         format.html { render :root }
@@ -119,19 +123,16 @@ class UsersController < ApplicationController
 
   def destroy
       @userdel = User.find_by_username(params[:user][:username])
-
-
       if (@userdel.username != session[:user_name]) && (@userdel.username != "Superadmin")
-        if @userdel.destroy
+          if @userdel.destroy
           respond_to do |format|
             format.html { redirect_to dumget_path, notice: 'User was successfully deleted.' }
             format.json { head :no_content }
             end
         end
       else
-        flash[:notice] = 'User cannot be deleted'
+        format.html { redirect_to dumget_path, notice: 'User cannot be deleted.' }
       end
-
   end
 
   def set_user
