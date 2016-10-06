@@ -1,5 +1,6 @@
 <% provide(:title, 'Admin Console') %>
 <div align="left"><h3>Hello <%= session[:user_name] %>!</h3></div>
+<div align = "left"><h3><%= link_to 'New Message', index_notif_url%></h3></div>
 <p id="notice"><%= notice %></p>
 <h2>Admin Console</h2>
 <%= form_for(:user, url:dum_path) do |f| %>
@@ -17,6 +18,7 @@
         <li><%= link_to 'Manage Rooms', library_rooms_path%></li>
         <li><%= link_to 'Book A Room', new_booking_history_path%></li>
         <li><%= link_to 'View Rooms Reservation History', bkhist_booking_history_path%></li>
+        <li><%= link_to 'Release a Booking', bookingdel_booking_history_path %></li>
       </ul>
       <br><label>Manage Library Members</label><br>
       <ul><br>
