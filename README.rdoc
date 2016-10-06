@@ -28,15 +28,14 @@ User needs to click on Release a Booking link and he will be shown a list of all
 User needs to enter the booking id for which he needs to cancel the reservation.
 The reservation entry will then be deleted from the records.
 
-3.View Booking History:
+3. View Booking History:
 User can see his own bookings, sorted by date.
 
 4. Informing teammates of existing booking (Extra Credit)
 Any user who makes a successful booking, can send a notification message to his team member by clicking on ‘Inform teammates of existing booking’. The user for whom this message has been sent, can view it from ‘New Message’ link once he logs in.
 
-
 5. Edit Profile :
-User can change his/her registered email id or password . Username will remain the same.
+User can change his/her registered email id or password. Username will remain the same.
 
 Admin Functionality :
 
@@ -45,7 +44,6 @@ For adding new admins : Admin just needs to change permission by clicking on "Ch
 Admin can add new members to library through Adding New Members
 To see which user he wants to make admin, he can "view all the members" under Manage Library Members
 To verify that the user has been added in the admin list, you can check "View all admins" under "Manage Admins"
-
 
 Default Admin (Super admin in this case) can add more admins.
 View all admins
