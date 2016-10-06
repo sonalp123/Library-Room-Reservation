@@ -17,9 +17,11 @@ He has the option of entering room number/ library building/ size of room to que
 The result is shown for that particular date in the form of a time duration grid. According to the query, resulting rooms are retrieved and are showcased in the form of a table indicating when it is free/booked. The table also describes the room in terms of its location building and its size.
 The user can accordingly fill in the room number with the start and end time in the reservation form.
 If a room gets booked successfully , a booking id is displayed.
- Room reservation is successful if :
-Reservation is made for maximum 2 hours.
-Room is booked for a date which falls within the week.
+
+Room reservation is successful if:
+- Reservation is made for maximum 2 hours.
+- Room is booked for a date which falls within the week.
+
 The reservation can fail if username , start time ,end time , date: any one of these is left blank. It can also fail if the reasons above are not satisfied.
 
 2.Release a Booking:
