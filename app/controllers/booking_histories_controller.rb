@@ -12,15 +12,15 @@ class BookingHistoriesController < ApplicationController
     @booking = BookingHistory.new(booking_history_params)
     if params[:booking_history][:room_num]
       @rooms_matching_library =  LibraryRoom.where("library_rooms.number = ?",@booking.room_num )
-      if @rooms_matching_library.exists?
-        else
-          flash[:notice] = "Invalid search."
-          if session[:user_role] == 'admin'
-            redirect_to search_booking_history_url
-            else
-              redirect_to booking_histories_url
-          end
-      end
+     # if @rooms_matching_library.exists?
+      #  else
+      #    flash[:notice] = "Invalid search."
+      #    if session[:user_role] == 'admin'
+      #      redirect_to search_booking_history_url
+      #      else
+       #       redirect_to booking_histories_url
+       #   end
+     # end
       @booked_list = BookingHistory.where("booking_histories.room_num = ? AND date = ?",@booking.room_num,@booking.date)
     end
   end
@@ -41,15 +41,15 @@ class BookingHistoriesController < ApplicationController
     check = 0
     @booking_history = BookingHistory.new(booking_history_params)
     @room_details = LibraryRoom.find_by_number(@booking_history.room_num)
-    if @room_details.nil?
-      if session[:user_role] == 'admin'
-        flash[:notice] = 'Invalid room details'
-        redirect_to new_booking_history_url
-      else
-        flash[:notice] = 'Invalid room details'
-        redirect_to booking_histories_url
-      end
-    end
+   # if @room_details.nil?
+   #   if session[:user_role] == 'admin'
+   #     flash[:notice] = 'Invalid room details'
+   #     redirect_to new_booking_history_url
+   #   else
+   #     flash[:notice] = 'Invalid room details'
+   #     redirect_to booking_histories_url
+   #   end
+   # end
     if session[:user_role] == 'admin'
       then
     else
