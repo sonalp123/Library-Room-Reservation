@@ -1,8 +1,12 @@
 <% provide(:title, 'Delete Booking') %>
 <h2>Deleting Booking</h2>
 <%= form_for (BookingHistory.new),:url=> url_for(:controller => 'booking_histories',:action =>'destroy') do |f| %>
-    <% user = session[:user_name] %>
-    <% @member_booking = BookingHistory.where("booking_histories.username = ? ",user ).order(:date) %>
+    <% if session[:user_role] == 'admin' %>
+        <% @member_booking = BookingHistory.all.order(:date) %>
+    <% else %>
+        <% user = session[:user_name] %>
+        <% @member_booking = BookingHistory.where("booking_histories.username = ? ",user ).order(:date) %>
+    <% end %>
     <table border ='2'>
       <tr>
         <th>Booking id</th>
@@ -31,7 +35,7 @@
       <%= f.text_field :id %>
     </div>
     <br>
-    <label>Are you sure you wish to delete this member?</label>
+    <label>Are you sure you wish to delete this booking?</label>
     <br>
     <div class="actions">
       <br>
