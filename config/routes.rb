@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :library_rooms
-  post '/booking_histories/create',to: 'booking_histories#create'
+
   get 'sessions/logout' => 'sessions#logout'
   post 'users/dum', to: 'users#dum', :as => 'dum'
   get 'users/dum', to: 'users#dum', :as => 'dumget'

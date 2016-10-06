@@ -17,8 +17,8 @@
         <td><%= library_room.number %></td>
         <td><%= library_room.building %></td>
         <td><%= library_room.size %></td>
-        <td><%= button_to 'Show', library_room %></td>
-        <td><%= button_to 'Edit', edit_library_room_path(library_room) %></td>
+        <td><%= link_to 'Show', library_room %></td>
+        <td><%= link_to 'Edit', edit_library_room_path(library_room) %></td>
         <td><%= button_to 'Destroy', library_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
