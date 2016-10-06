@@ -131,16 +131,16 @@ class UsersController < ApplicationController
 
   def destroy
       @userdel = User.find_by_username(params[:user][:username])
-      if (@userdel.username != session[:user_name]) && (@userdel.username != "Superadmin")
-          if @userdel.destroy
-          respond_to do |format|
-            format.html { redirect_to dumget_path, notice: 'User was successfully deleted.' }
-            format.json { head :no_content }
-            end
-        end
-      else
-        format.html { redirect_to dumget_path, notice: 'User cannot be deleted.' }
+      respond_to do |format|
+      if (@userdel.username != session[:user_name]) and (@userdel.username != "Superadmin")
+        if @userdel.destroy
+          format.html { redirect_to dum_url, notice: 'User was successfully deleted.' }
+          format.json { head :no_content }
+          end
+        else
+          format.html { redirect_to dum_url, notice: 'User cannot be deleted.' }
       end
+    end
   end
 
   def set_user
