@@ -8,7 +8,6 @@
       <th>Sender</th>
       <th>Message</th>
       <th>Date</th>
-      <th>Read</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,14 +19,6 @@
             <td><%= notif.sender %></td>
             <td><%= notif.message %></td>
             <td><%= notif.date %></td>
-            <% if notif.read == "false" %>
-                <td bgcolor = "#7fff00"></td>
-            <% else %>
-                <td bgcolor="ff6347"></td>
-            <% end %>
-            <td><%= link_to 'Show', show_notif_path(notif) %></td>
-            <td><%= link_to 'Edit', edit_notif_path(notif) %></td>
-            <td><%= link_to 'Delete', destroy_notif_path(notif) %></td>
           </tr>
         <% end %>
       <% end %>
@@ -36,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Notif', new_notif_path %>
+<%= link_to 'Send a new message', new_notif_path %>

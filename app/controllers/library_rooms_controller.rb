@@ -56,7 +56,16 @@ class LibraryRoomsController < ApplicationController
 
   def destroy
     #@library_room = LibraryRoom.find_by(params[:library_room][:id])
-    respond_to do |format|
+      @bking = BookingHistory.where("booking_histories.room_num = ?",@library_room.number)
+      @bking.each do |bh|
+        @notif = Notif.new
+        @notif.message = 'Booking id: ' + bh.id.to_s + 'is cancelled as Room number ' + bh.room_num.to_s + 'is deleted'
+        @notif.sender = 'Admin'
+        @notif.username = bh.username
+        @notif.date = Date.today
+        @notif.save
+      end
+      respond_to do |format|
       if @library_room.destroy
         format.html { redirect_to dum_url, notice: 'Library room was successfully deleted.' }
         format.json { head :no_content }

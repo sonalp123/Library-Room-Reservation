@@ -1,6 +1,6 @@
 class NotifsController < ApplicationController
-  before_action :set_notif, only: [:addteam, :show, :edit, :update, :destroy]
-  wrap_parameters :notif, include: [:username, :sender, :message, :date, :read, :booking_id]
+  before_action :set_notif, only: [:addteam, :edit, :update, :destroy]
+ wrap_parameters :notif, include: [:username, :sender, :message, :date, :read, :booking_id]
 
   # GET /notifs
   # GET /notifs.json
@@ -18,7 +18,7 @@ class NotifsController < ApplicationController
     @notif.message = session[:user_name] + ' has booked a room for your meeting!. Booking id is:' + @notif.booking_id.to_s
     @notif.sender = session[:user_name]
     @notif.date = Date.today
-    @notif.read = 'F'
+    @notif.read = "False"
     respond_to do |format|
       if @notif.save
         format.html { redirect_to booking_histories_path, notice: 'Notif was successfully created.' }
@@ -31,7 +31,8 @@ class NotifsController < ApplicationController
   # GET /notifs/1
   # GET /notifs/1.json
   def show
-    @notif = Notif.new
+    @notif = Notif.find(params[:id])
+    @notif.read = 'T'
   end
 
   # GET /notifs/new
@@ -85,7 +86,7 @@ class NotifsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_notif
-      @notif = Notif.new
+      @notif = Notif.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
