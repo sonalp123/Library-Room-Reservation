@@ -1,5 +1,5 @@
 class NotifsController < ApplicationController
-  before_action :set_notif, only: [:addteam, :edit, :update, :destroy]
+  before_action :set_notif, only: [:edit, :update, :destroy]
  wrap_parameters :notif, include: [:username, :sender, :message, :date, :read, :booking_id]
 
   # GET /notifs
